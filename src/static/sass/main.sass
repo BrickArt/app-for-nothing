@@ -1,0 +1,280 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+    &:before, &:after
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
+        box-sizing: border-box
+
+*::-webkit-input-placeholder
+    color: #666
+    opacity: 1
+
+*:-moz-placeholder
+    color: #666
+    opacity: 1
+
+*::-moz-placeholder
+    color: #666
+    opacity: 1
+
+*:-ms-input-placeholder
+    color: #666
+    opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+    color: #666
+body input:required:valid,
+body textarea:required:valid
+    color: #666
+
+html, body
+    height: 100%
+
+body
+    font-size: 16px
+    min-width: 320px
+    position: relative
+    line-height: 1.65
+    font-family: $default-font
+    overflow-x: hidden
+    opacity: 1
+
+.img-responsive
+    display: block
+    max-width: 100%
+    height: auto
+
+    
+//-----menu------------
+.menu
+    background-color: $nav-bg
+    height: 100vh
+    width: 4em
+    // padding: 0 0.75em
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 99
+.nav
+    display: flex
+    flex-direction: row
+    
+
+.menu-btn
+    border: none
+    border-radius: 0
+    background: none
+    padding: 0 0.75em
+    margin: 5.8vh 0
+
+.btn-icon
+    fill: none
+    stroke: white
+    width: 2.5em
+    path
+        border: none
+
+.ungle
+    width: 0
+    height: 0
+    border: 0 solid transparent
+    border-top-width: 7px
+    border-bottom-width: 7px
+    border-left: 7px solid $nav-bg
+    margin: auto 0
+    display: none
+
+.active .ungle
+    display: block
+
+.activated
+    position: absolute
+    top: 0
+
+    
+    
+//------content----------
+.content
+    box-sizing: border-box
+    width: 100vw
+    margin-left: 4em
+
+.block
+    height: 100vh
+    overflow: hidden
+
+
+
+//------video-------
+.video-block
+    width: 100%
+    border-right: none
+    border-left: none
+    position: relative
+    background-color: red
+
+.video
+    height: 100%
+    width: auto
+    min-height: 100%
+
+.text-block
+    display: flex
+    flex-direction: column
+    position: absolute
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff
+
+.txt-larger
+    font-size: 100px
+    font-weight: 600
+    line-height: 1
+
+.txt-smaller
+    font-size: 20px
+
+
+
+//-----popup---------
+
+.popup
+    width: 100vw
+    height: 100vh
+    background-color: rgba(0, 0, 0, 0.65);
+    position: fixed
+    z-index: 100
+    display: none
+
+.modal
+    width: 500px
+    // height: 500px
+    position: fixed
+    background-color: #fff
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // width: 50%
+    opacity: 1
+    z-index: 101
+    padding: 30px
+    padding: 3em
+
+
+.closeNotif
+    top: -10px
+    right: -10px
+    width: 25px
+    height: 25px
+    position: absolute
+    padding: 0
+    border: 2px solid #ccc
+    -webkit-border-radius: 15px
+    -moz-border-radius: 15px
+    -ms-border-radius: 15px
+    -o-border-radius: 15px
+    border-radius: 15px
+    background-color: rgba(61, 61, 61, 0.8)
+    -webkit-box-shadow: 0px 0px 10px #000
+    -moz-box-shadow: 0px 0px 10px #000
+    box-shadow: 0px 0px 10px #000
+    text-align: center
+    text-decoration: none
+    font: 13px 'Tahoma', Arial, sans-serif
+    font-weight: bold
+    -webkit-transition: all ease .8s
+    -moz-transition: all ease .8s
+    -ms-transition: all ease .8s
+    -o-transition: all ease .8s
+    transition: all ease .8s
+    color: #fff
+    &:hover
+      cursor: pointer
+
+.modal-content
+    h1
+        margin: 0
+
+    
+
+//-----gallery-----
+.gallery-block
+    background-color: green
+
+.carousel, .img
+    width: 100%
+    width: 100%
+
+.slider
+    margin: 0 auto
+    padding: 0
+    width: 100%
+    height: 100%
+    color: #333
+    background: #fff
+    margin: 0
+
+
+.slide-item
+    width: 100%
+    height: 100%
+    text-align: center
+    color: #419be0
+    background: white
+.resize
+    width: 120%
+    height: auto
+
+
+
+    //------btn------
+.button-block
+    background-color: yellow
+.modal-btn
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+.openPopup
+    padding: 0 1em
+    font-size: 2em
+    width: 200px
+    height: 70px
+    margin: 0 auto
+    border: none
+    background-color: $nav-bg
+    color: #fff
+    &:hover
+        background-color: #303030
+
+
+//------chart-----
+.chart-block
+    background-color: white
+    width: 100%
+    height: 100%
+    box-sizing: border-box
+
+.chart
+    margin: 3em 7em 3em 3em
+
+.canvas
+    height: 50%
+    width: 100%
+
+
+//resize-------------
+.resize-x
+    height: auto
+    width: 100vw
+    
+@import "media" // Всегда в конце

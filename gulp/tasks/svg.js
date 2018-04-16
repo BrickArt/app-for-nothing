@@ -1,17 +1,12 @@
-var svgmin = require('gulp-svgmin');
-var cheerio = require('gulp-cheerio');
-var replace = require('gulp-replace');
-var svgSprite = require('gulp-svg-sprite');
-
 module.exports = function() {
-    $.gulp.task('svg', function(){
-        return $.gulp.src('src/static/img/svg/*.svg')
-            .pipe(svgmin({
+    $.gulp.task('svg', () => {
+        return $.gulp.src('./dev/static/img/svg/*.svg')
+            .pipe($.gp.svgmin({
                 js2svg: {
                     pretty: true
                 }
             }))
-            .pipe(cheerio({
+            .pipe($.gp.cheerio({
                 run: function($) {
                     $('[fill]').removeAttr('fill');
                     $('[stroke]').removeAttr('stroke');
@@ -19,14 +14,14 @@ module.exports = function() {
                 },
                 parserOptions: { xmlMode: true }
             }))
-            .pipe(replace('&gt;', '>'))
-            .pipe(svgSprite({
+            .pipe($.gp.replace('&gt;', '>'))
+            .pipe($.gp.svgSprite({
                 mode: {
                     symbol: {
                         sprite: "sprite.svg"
                     }
                 }
             }))
-            .pipe($.gulp.dest('build/static/img/svg'))
+            .pipe($.gulp.dest('./build/static/img/svg/'));
     });
-}
+};

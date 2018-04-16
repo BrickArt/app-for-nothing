@@ -1,28 +1,32 @@
-'use strict';
-
 global.$ = {
-    gulp: require('gulp'),
-    browserSync: require('browser-sync').create(),
-
     path: {
-        tasks: require('./gulp/config')
-    }
-}
+        task: require('./gulp/paths/tasks.js')
+    },
+    gulp: require('gulp'),
+    del: require('del'),
+    fs: require('fs'),
+    browserSync: require('browser-sync').create(),
+    gp: require('gulp-load-plugins')()
+};
 
-$.path.tasks.forEach(task => {
-    require(task)();
+$.path.task.forEach(function(taskPath) {
+    require(taskPath)();
 });
 
-$.gulp.task('default',
-    $.gulp.series(
-        'clean',
-        $.gulp.parallel('pug', 'sass', 'scripts:lib', 'scripts', 'img:dev', 'svg:copy', 'svg', 'fonts', 'video', 'lib'),
-        $.gulp.parallel('watch', 'browser-sync'))
-);
 
-$.gulp.task('build',
-    $.gulp.series(
-        'clean',
-        $.gulp.parallel('pug', 'sass', 'scripts:lib', 'scripts', 'img:build', 'svg:copy', 'svg', 'fonts', 'video', 'lib'),
-        $.gulp.parallel('watch', 'browser-sync'))
-);
+$.gulp.task('dev', $.gulp.series(
+    'clean',
+    $.gulp.parallel('styles:dev', 'pug', 'libsJS:dev', 'js:copy', 'svg', 'img:dev', 'fonts','svg:copy')));
+
+$.gulp.task('build', $.gulp.series(
+    'clean',
+    $.gulp.parallel('styles:build', 'pug', 'libsJS:build', 'js:copy', 'svg', 'img:build', 'fonts','svg:copy')));
+
+
+$.gulp.task('default', $.gulp.series(
+    'dev',
+    $.gulp.parallel(
+        'watch',
+        'serve'
+    )
+));
